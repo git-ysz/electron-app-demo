@@ -1,0 +1,83 @@
+{
+	"name": "electron-app-demo",
+	"productName": "ElectronAppDemo",
+	"version": "1.0.0",
+	"description": "The best app ever",
+	"license": "MIT",
+	"author": {
+		"name": "yaoshuzhuang",
+		"email": "y976776565@gmail.com",
+		"url": "https://github.com/git-ysz"
+	},
+	"scripts": {
+		"start": "nodemon -e js --exec electron .",
+		"postinstall": "electron-builder install-app-deps",
+		"lint": "xo",
+		"test": "npm run lint",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --macos --linux --windows",
+		"dist:windows": "electron-builder --windows",
+		"dist:linux": "electron-builder --linux",
+		"dist:mac": "electron-builder --macos",
+		"release": "np"
+	},
+	"dependencies": {
+		"electron-context-menu": "^3.4.0",
+		"electron-debug": "^3.2.0",
+		"electron-store": "^8.1.0",
+		"electron-unhandled": "^4.0.1",
+		"electron-updater": "^5.2.1",
+		"electron-util": "^0.17.2",
+		"electron-win-state": "^1.1.22"
+	},
+	"devDependencies": {
+		"electron": "^13.0.0",
+		"electron-builder": "^23.3.3",
+		"electron-devtools-installer": "^3.2.0",
+		"nodemon": "^3.1.4",
+		"np": "^7.6.2",
+		"xo": "^0.51.0"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		],
+		"rules": {
+			"unicorn/prefer-module": "off"
+		}
+	},
+	"np": {
+		"publish": false,
+		"releaseDraft": false
+	},
+	"build": {
+		"appId": "com.company.ElectronAppDemo",
+		"mac": {
+			"category": "public.app-category.social-networking",
+			"darkModeSupport": true
+		},
+		"dmg": {
+			"iconSize": 160,
+			"contents": [
+				{
+					"x": 180,
+					"y": 170
+				},
+				{
+					"x": 480,
+					"y": 170,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			],
+			"category": "Network;Chat"
+		}
+	}
+}
