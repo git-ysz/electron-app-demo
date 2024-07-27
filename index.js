@@ -32,14 +32,17 @@ app.setAppUserModelId("com.company.ElectronAppDemo");
 
 // Prevent window from being garbage collected
 let mainWindow;
-const winState = new WinState({})
+const defaultWidth = 1366
+const defaultHeight = 768
+const winState = new WinState({ defaultWidth, defaultHeight })
 
 // 创建主窗口
 const createMainWindow = async () => {
 	const window_ = new BrowserWindow({
 		title: app.name,
-		minWidth: 1366,
-		minHeight: 768,
+    ...winState.winOptions,
+		minWidth: defaultWidth,
+		minHeight: defaultHeight,
 		show: false, // Use `ready-to-show` event to show window
 		icon: path.join(__dirname, "static", "icon.png"),
 		autoHideMenuBar: !is.development, // 隐藏导航栏
@@ -51,8 +54,7 @@ const createMainWindow = async () => {
 			webSecurity: false, // 禁用安全策略
 			// enableRemoteModule: true, // 使用remote模块
 			preload: path.join(__dirname, "preload.js"), // 预加载脚本
-		},
-    ...winState.winOptions
+		}
 	});
 
 	window_.on("ready-to-show", () => {
