@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"description": "The best app ever",
 	"license": "MIT",
+  "main": "main.js",
 	"author": {
 		"name": "yaoshuzhuang",
 		"email": "y976776565@gmail.com",
@@ -57,6 +58,9 @@
 			"category": "public.app-category.social-networking",
 			"darkModeSupport": true
 		},
+    "win": {
+      "icon": "static/icon.png"
+    },
 		"dmg": {
 			"iconSize": 160,
 			"contents": [
@@ -78,6 +82,18 @@
 				"deb"
 			],
 			"category": "Network;Chat"
-		}
+		},
+    "extraFiles": [
+      {
+        "from": "static",
+        "to": "static"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "config.json",
+        "to": "../"
+      }
+    ]
 	}
 }
